@@ -1,0 +1,24 @@
+<a href="/">Home</a>
+
+
+<link rel="stylesheet" href="/css/styles.css">
+
+<div class="container">
+    <h1>All Courses</h1>
+    <ul>
+      <% courses.forEach(course => { %>
+        <li>
+          <a href="/courses/<%= course._id %>"><%= course.name %></a>
+          <!-- Only show the Edit and Delete buttons if the user is logged in and is a teacher -->
+          <% if (user && user.role === 'teacher') { %>
+            <a href="/courses/<%= course._id %>/edit">Edit</a>
+            <form action="/courses/<%= course._id %>?_method=DELETE" method="POST" style="display:inline;">
+              <button type="submit">Delete</button>
+            </form>
+          <% } %>
+        </li>
+      <% }) %>
+    </ul>
+    
+</div>
+

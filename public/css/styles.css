@@ -1,20 +1,216 @@
-
-body {
-    background-color: #56ed8d;
-   
+/* Navbar styling */
+.navbar-brand {
+    color: #eee3e3 !important; /* Light text color */
+    font-size: 48px !important; 
+    font-weight: bold; /* Make sure it's bold */
 }
 
+/* Change the color on hover */
+.navbar-brand:hover {
+    color: #e51010 !important; 
+}
+
+/* General navbar styling */
 .navbar {
-    position: relative; /* or position: fixed; */
-    z-index: 1000; /* Ensure this is higher than the carousel */
+    background-color: #333;  /* Dark background */
+    color: rgb(8, 7, 7);  
+    padding: 10px 20px;
+    position: relative; /* Ensure it stays on top */
+    z-index: 10; /* Ensure navbar is above other elements */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for contrast */
 }
 
-h1, h2 {
-    color: #333; 
+/* Navbar link styles */
+.navbar a {
+    color: rgb(214, 31, 89) !important;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 20px;
 }
 
-@media (max-width: 600px) {
-    form {
-        width: 90%;
-    }
+/* Hover effect for navbar links */
+.navbar a:hover {
+    color: #805bde !important;
+    text-decoration: underline;  /* Optional: underline on hover */
+}
+
+/* Dropdown menus */
+.navbar .dropdown-menu {
+    background-color: #333;  /* Same dark background for the dropdown */
+    border: none;
+}
+
+.navbar .dropdown-menu a {
+    color: rgb(16, 15, 15) !important; /* Ensure dropdown links are also white */
+}
+
+.navbar .dropdown-menu a:hover {
+    color: #ef0f0f !important; 
+    background-color: #767373;  /* Slightly lighter background */
+}
+
+/* Dropdown toggle styling */
+.navbar .dropdown-toggle {
+    background-color: transparent;
+    color: rgb(14, 14, 14) !important; 
+}
+
+/* Dropdown hover effect */
+.navbar .dropdown-toggle:hover {
+    color: #f50d0d !important;
+}
+
+
+/* Main content styling */
+body {
+    background-color: #73f594 !important;  /* Light green for watermelon rind */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    margin-bottom: 50px;
+    padding: 0;
+}
+
+
+h1, h2, h3 {
+    color: #0d0f0e;  
+    text-align: center;
+}
+
+/* Title Styles */
+h2 {
+    color: #c90906;  /* Watermelon red */
+}
+
+/* Make the dashboard container use flexbox */
+.dashboard-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Style for both the Available Courses and Your Schedule sections */
+.courses-section, .schedule-section {
+    flex: 1; /* Make both sections take equal width */
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Flex container for each core value */
+.core-value {
+    display: flex;
+    justify-content: space-between;  /* Spread the letter and the word apart */
+    align-items: center;  /* Align both vertically at the center */
+    padding: 10px 20px;  /* Slightly larger padding for more breathing room */
+    background-color: white;
+    border-radius: 8px;
+    border: 2px solid #333;
+    margin: 10px auto;  /* More margin for spacing between core values */
+    width: 50%;  /* Adjust width to suit your design */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* More prominent shadow for depth */
+}
+
+/* Styles for the letter (first part) of the core value */
+.core-value .letter {
+    font-size: 24px;
+    font-weight: bold;
+    color: #c90906;  /* Watermelon red for the letter */
+    margin-right: 20px;  /* Space between letter and the word */
+}
+
+/* Styles for the word (second part) of the core value */
+.core-value .word {
+    font-size: 18px;
+    color: #333;  /* Darker color for the word */
+    flex-grow: 1;  /* Make the word expand to take up space */
+    text-align: left;  /* Align the word to the left */
+}
+
+
+/* Style for course list items to ensure equal height and alignment */
+ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: white;
+    border: 2px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure course names are displayed on one line */
+ul li span.course-name {
+    flex-grow: 1;
+    text-align: left;
+    margin-right: 10px;
+    white-space: nowrap;  /* Prevent line breaks */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Style buttons consistently */
+ul li .btn {
+    flex-shrink: 0;  /* Prevent buttons from shrinking */
+    margin-left: 10px;
+    padding: 8px 16px;
+    background-color: #c90906; /* Watermelon red */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+ul li .btn:hover {
+    background-color: #e12e28;  /* Slightly lighter red on hover */
+}
+
+/* Style the modal content */
+.modal-content {
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header, .modal-footer {
+    background-color: #c90906;  /* Watermelon red */
+    color: white;
+    padding: 10px;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer .btn-close {
+    background-color: #333;
+    padding: 8px 16px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-footer .btn-close:hover {
+    background-color: #444;
+}
+
+/* Adjust the button container to make buttons equal in size */
+button, .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+/* Centering Form */
+form {
+    display: inline-block;
+    margin-left: 10px;
 }

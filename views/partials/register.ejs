@@ -1,0 +1,25 @@
+<h1>Signup as <%= role === 'teacher' ? 'Instructor' : 'Student' %></h1>
+
+<form action="/register?role=<%= role %>" method="POST">
+  <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input type="text" class="form-control" id="username" name="username" required>
+  </div>
+  <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" name="password" required>
+  </div>
+
+  <!-- Department field only for teachers -->
+  <% if (role === 'teacher') { %>
+      <div class="mb-3">
+          <label for="department" class="form-label">Department</label>
+          <input type="text" class="form-control" id="department" name="department">
+      </div>
+  <% } %>
+
+  <input type="hidden" name="role" value="<%= role %>"> <!-- Ensure the role is passed -->
+  
+  <button type="submit" class="btn btn-primary">Signup</button>
+</form>
+

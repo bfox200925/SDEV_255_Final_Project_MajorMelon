@@ -1,0 +1,19 @@
+<h1>Login as <%= role === 'teacher' ? 'Instructor' : 'Student' %></h1>
+
+<form action="/login?role=<%= role %>" method="POST">
+  <div>
+      <label for="username">Username:</label>
+      <input type="text" name="username" id="username" required>
+  </div>
+  <div>
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" required>
+  </div>
+
+  <!-- Hidden input to pass role (teacher or student) -->
+  <input type="hidden" name="role" value="<%= role %>">
+
+  <button type="submit">Login</button>
+</form>
+
+

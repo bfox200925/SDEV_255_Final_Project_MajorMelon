@@ -1,0 +1,48 @@
+
+<link rel="stylesheet" href="/css/styles.css">
+
+<h1>Welcome, <%= user.username %> (Instructor)</h1>
+
+<!-- Add logout button -->
+<form action="/logout" method="GET" style="text-align: right; margin-top: 10px;">
+  <button type="submit" class="btn">Logout</button>
+</form>
+
+<h2>Current courses:</h2>
+
+<ul>
+    <% courses.forEach(course => { %>
+        <li>
+            <strong><%= course.name %></strong> - <%= course.description %> (Credits: <%= course.credits %>)
+            <form action="/dashboard/edit-course/<%= course._id %>" method="GET" style="display:inline;">
+              <button type="submit" class="btn">Edit</button>
+            </form>
+            <form action="/dashboard/delete-course/<%= course._id %>" method="POST" style="display:inline;">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+    <% }) %>
+</ul>
+
+<h3 class="text-center" style="color:red;">Add New Course</h3>
+
+<form action="/dashboard/add-course" method="POST">
+  <label for="name">Course Name:</label>
+  <input type="text" id="name" name="name" required><br>
+
+  <label for="description">Description:</label>
+  <input type="text" id="description" name="description" required><br>
+
+  <label for="credits">Credits:</label>
+  <input type="number" id="credits" name="credits" required><br>
+
+  <!-- Add this field for subject area -->
+  <label for="subjectArea">Subject Area:</label>
+  <input type="text" id="subjectArea" name="subjectArea" required><br>
+
+  <label for="teacher">Instructor:</label>
+  <input type="hidden" id="teacher" name="teacher" value="<%= user._id %>"><!-- Pass the teacher ID directly -->
+
+  <button type="submit" class="btn">Add Course</button>
+</form>
+

@@ -1,0 +1,83 @@
+<link rel="stylesheet" href="/css/styles.css">
+
+<h1>Student Dashboard</h1>
+<p>Welcome, <%= user.username %>!</p>
+
+<!-- Logout Button -->
+<form action="/logout" method="GET" style="text-align: right; margin-top: 10px;">
+    <button type="submit" class="btn">Logout</button>
+</form>
+
+<div class="dashboard-container">
+    <!-- Available Courses Section -->
+    <div class="courses-section">
+        <h2>Available Courses</h2>
+        <ul>
+            <% courses.forEach(course => { %>
+                <li>
+                    <%= course.name %> 
+                    <!-- Check if course.teacher exists before accessing name -->
+                    <button class="btn" onclick="showDetails('<%= course._id %>', '<%= course.name %>', '<%= course.description %>', '<%= course.credits %>', '<%= course.teacher ? course.teacher.name : 'Unknown' %>')">View Details</button>
+                    <form action="/dashboard/add-course/<%= course._id %>" method="POST" style="display:inline;">
+                        <button type="submit" class="btn">Add to Schedule</button>
+                    </form>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+
+    <!-- Your Schedule Section -->
+    <div class="schedule-section">
+        <h2>Your Schedule</h2>
+        <ul>
+            <% scheduleCourses.forEach(course => { %>
+                <li>
+                    <%= course.name %> 
+                    <!-- Check if course.teacher exists before accessing name -->
+                    <button class="btn" onclick="showDetails('<%= course._id %>', '<%= course.name %>', '<%= course.description %>', '<%= course.credits %>', '<%= course.teacher ? course.teacher.name : 'Unknown' %>')">View Details</button>
+                    <form action="/dashboard/remove-course/<%= course._id %>" method="POST" style="display:inline;">
+                        <button type="submit" class="btn">Remove from Schedule</button>
+                    </form>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+</div>
+
+<!-- Modal for displaying course details -->
+<div id="course-details-modal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4>Course Details</h4>
+        </div>
+        <div class="modal-body">
+            <p><strong>Course Name:</strong> <span id="modalCourseName"></span></p>
+            <p><strong>Description:</strong> <span id="modalCourseDescription"></span></p>
+            <p><strong>Credits:</strong> <span id="modalCourseCredits"></span></p>
+            <p><strong>Instructor:</strong> <span id="modalCourseInstructor"></span></p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-close" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+</div>
+
+<script>
+  // Function to display the modal with course details
+  function showDetails(courseId, name, description, credits, instructor) {
+    // Populate modal with course details
+    document.getElementById('modalCourseName').textContent = name;
+    document.getElementById('modalCourseDescription').textContent = description;
+    document.getElementById('modalCourseCredits').textContent = credits;
+    document.getElementById('modalCourseInstructor').textContent = instructor;
+
+    // Show the modal
+    document.getElementById('course-details-modal').style.display = 'block';
+  }
+
+  // Function to close the modal
+  function closeModal() {
+    document.getElementById('course-details-modal').style.display = 'none';
+  }
+</script>
+
